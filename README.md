@@ -1,2 +1,2 @@
 # DevDojoSpringBoot
- Spring Boot Essentials
+ Spring Boot Essential 2
