@@ -48,7 +48,15 @@ public class SpringClient {
                 new HttpEntity<>(samuraiChamploo, createJsonHeader()),
                 Void.class);
 
-        log.info();
+        log.info(samuraiChamplooUpdated);
+
+        ResponseEntity<Void> samuraiChamplooDelete = new RestTemplate().exchange("http://localhost:8080/animes/{id}",
+                HttpMethod.DELETE,
+                null,
+                Void.class,
+                animeToBeUpdated.getId());
+
+        log.info(samuraiChamplooDelete);
 
     }
 
