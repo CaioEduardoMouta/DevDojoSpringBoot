@@ -1,6 +1,7 @@
 package academy.devdojo.springboot2.repository;
 
 import academy.devdojo.springboot2.domain.Anime;
+import academy.devdojo.springboot2.util.AnimeCreator;
 import lombok.extern.log4j.Log4j2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -24,7 +25,7 @@ class AnimeRepositoryTest {
     @Test
     @DisplayName("Save persists anime when sucessfull")
     void Save_PersistAnime_WhenSucessful(){
-        Anime animeToBeSaved = createAnime();
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
         Anime animeSaved = this.animeRepository.save(animeToBeSaved);
         Assertions.assertThat(animeSaved).isNotNull();
         Assertions.assertThat(animeSaved.getId()).isNotNull();
@@ -34,9 +35,9 @@ class AnimeRepositoryTest {
     @Test
     @DisplayName("Save update anime when sucessfull")
     void Save_UpdatesAnime_WhenSucessful(){
-        Anime animeToBeSaved = createAnime();
+        Anime createAnimeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
-        Anime animeSaved = this.animeRepository.save(animeToBeSaved);
+        Anime animeSaved = this.animeRepository.save(createAnimeToBeSaved);
 
         animeSaved.setName("Overlord");
 
@@ -51,9 +52,9 @@ class AnimeRepositoryTest {
     @Test
     @DisplayName("Delete removes anime when sucessfull")
     void delete_RemovesAnime_WhenSucessful(){
-        Anime animeToBeSaved = createAnime();
+        Anime createAnimeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
-        Anime animeSaved = this.animeRepository.save(animeToBeSaved);
+        Anime animeSaved = this.animeRepository.save(createAnimeToBeSaved);
 
         this.animeRepository.delete(animeSaved);
 
@@ -89,9 +90,9 @@ class AnimeRepositoryTest {
     @DisplayName("Find By Name returns empty list when no anime is found")
     void findByName_ReturnsListOfAnime_WhenSuccessful(){
 
-        Anime animeToBeSaved = createAnime();
+        Anime createAnimeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
-        Anime animeSaved = this.animeRepository.save(animeToBeSaved);
+        Anime animeSaved = this.animeRepository.save(createAnimeToBeSaved);
 
         String name = animeSaved.getName();
 
@@ -106,9 +107,5 @@ class AnimeRepositoryTest {
 
 
 
-    private Anime createAnime(){
-        return Anime.builder()
-                .name("Hajime no Inpo")
-                .build();
-    }
+
 }
