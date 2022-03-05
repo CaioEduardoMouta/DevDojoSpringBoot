@@ -1,7 +1,9 @@
 package academy.devdojo.springboot2.integration;
 
 import academy.devdojo.springboot2.domain.Anime;
+import academy.devdojo.springboot2.repository.AnimeRepository;
 import academy.devdojo.springboot2.util.AnimeCreator;
+import academy.devdojo.springboot2.wrapper.PageableResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,21 +30,23 @@ class AnimeControllerIT {
 
     @LocalServerPort
     private int port;
-
+    @Autowired
+    private AnimeRepository animeRepository;
     @Test
     @DisplayName("list returns list of anime inside page object when successful")
     void listAll_ReturnasListOfAnimesInsidePageObject_WhenSucessful() {
-        String expectedName = AnimeCreator.createValidAnime().getName();
+        Anime savedAnime =  animeRepository.save(AnimeCreator.createAnimeToBeSaved());
+        String expectedName = savedAnime.getName();
 
-        PageImpl<Anime> exchange = testRestTemplate.exchange(" /animes", HttpMethod.GET, null,
-                new ParameterizedTypeReference<PageImpl<Anime>>() {
+        PageableResponse<Anime> animePage = testRestTemplate.exchange(" /animes", HttpMethod.GET, null,
+                new ParameterizedTypeReference<PageableResponse<Anime>>() {
                 }).getBody();
 
-//        Assertions.assertThat(animePage).isNotNull();
-//
-//        Assertions.assertThat(animePage.toList()).isNotEmpty().hasSize(1);
-//
-//        Assertions.assertThat(animePage.toList().get(0).getName()).isEqualTo(expectedName);
+        Assertions.assertThat(animePage).isNotNull();
+
+        Assertions.assertThat(animePage.toList()).isNotEmpty().hasSize(1);
+
+        Assertions.assertThat(animePage.toList().get(0).getName()).isEqualTo(expectedName);
 
 
     }
