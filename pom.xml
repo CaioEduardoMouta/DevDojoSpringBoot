@@ -33,10 +33,10 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        dependencies {
-        testCompile('org.springframework.boot:spring-boot-starter-test')
-        testCompile('org.junit.jupiter:junit-jupiter:5.4.0')
-        }
+<!--        dependencies {-->
+<!--        testCompile('org.springframework.boot:spring-boot-starter-test')-->
+<!--        testCompile('org.junit.jupiter:junit-jupiter:5.4.0')-->
+<!--        }-->
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
         <dependency>
@@ -67,6 +67,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
