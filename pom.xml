@@ -150,6 +150,10 @@
             <version>2.6.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-security -->
         <dependency>
