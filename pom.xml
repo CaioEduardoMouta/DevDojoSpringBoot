@@ -18,6 +18,8 @@
         <java.version>11</java.version>
         <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <springdoc-openapi-ui.version>1.4.8</springdoc-openapi-ui.version>
+        <jib-maven-plugin>2.6.0</jib-maven-plugin>
     </properties>
 
     <dependencies>
@@ -194,6 +196,23 @@
     </profiles>
 
     <build>
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>com.google.cloud.tools</groupId>-->
+<!--                <artifactId>jib-maven-plugin</artifactId>-->
+<!--                <version>${jib-maven-plugin.version}</version>-->
+<!--                <configuration>-->
+<!--                    <from>-->
+<!--                        <image>${docker.distroless.image}</image>-->
+<!--                    </from>-->
+<!--                        <to>-->
+<!--                            <image>${docker.image.name}</image>-->
+<!--                            <image>${docker.image.name}</image>
+                            </to>-->
+                            
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
